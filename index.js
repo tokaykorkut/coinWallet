@@ -7,11 +7,9 @@ const port = process.env.PORT || 3001
 
 const app = express()
 
-//body-parser part
 app.use(express.json())
+app.use(userRouter)
+app.use(exchangeRouter)
 
-// routers connection part
-//app.use(userRouter)
-//app.use(exchangeRouter)
 
 app.listen(port, ()=>{console.log('Project is up!')})

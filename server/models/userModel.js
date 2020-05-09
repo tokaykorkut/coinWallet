@@ -8,7 +8,15 @@ const UserSchema = new mongoose.Schema({
         minlength:3,
         maxlength:30,
         trim:true,
-        validate(value){if(validator.isEmpty(value) || validator.isNumeric(value)){throw new Error ('Not valid username!')}}
+        validate(value){if(validator.isEmpty(value) || validator.isNumeric(value)){throw new Error ('Not valid firstname!')}}
+    },
+    surname:{
+        type:String,
+        required:true,
+        minlength:3,
+        maxlength:30,
+        trim:true,
+        validate(value){if(validator.isEmpty(value) || validator.isNumeric(value)){throw new Error ('Not valid surname!')}}
     },
     email:{
         type:String,
@@ -28,7 +36,6 @@ const UserSchema = new mongoose.Schema({
             required:true
         }
     }]
-
 },{
     timestamps:true
 })
