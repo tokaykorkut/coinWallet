@@ -37,12 +37,14 @@ const AccountSchema = new mongoose.Schema({
     timestamps:true
 })
 
-AccountSchema.pre('save',function(next){
-    setTimeout(() => {
-        
-    }, 2000);
-    next()
-})
+AccountSchema.methods.makeExchange = async function(rawamount,amount,rate,from,to){
+
+    this.wallet[from] = (parseFloat(this.wallet[from]) - rawamount).toString(10)
+    const exchange = amount * rate
+    this.wallet[to] = (parseFloat(this.wallet[to]) + exchange).toString(10)
+    await this.save()
+}
+
 const Account = mongoose.model('accounts',AccountSchema)
 
 module.exports = Account

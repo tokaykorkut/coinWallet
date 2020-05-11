@@ -9,7 +9,7 @@ const app = express()
 
 app.use(express.json())
 app.use(userRouter)
-//app.use(exchangeRouter)
+app.use(exchangeRouter)
 
 
 app.listen(port, ()=>{console.log('Server is Up!')})
