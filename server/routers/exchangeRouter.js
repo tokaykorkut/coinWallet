@@ -6,7 +6,7 @@ const router = express.Router()
 /**
  * buy
  * sell
- * wallet_data
+ * get_wallet
  */
 
 router.post('/buy',authentication,async(req,res)=>{
@@ -25,7 +25,7 @@ router.post('/sell',authentication,async(req,res)=>{
     }
 })
 
-router.get('/wallet_data',authentication,async(req,res)=>{
+router.get('/get_wallet',authentication,async(req,res)=>{
     try {
 
     } catch (error) {
