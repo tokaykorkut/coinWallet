@@ -9,7 +9,7 @@ const router = express.Router()
  * register             X create and send account   X
  * log out              X
  * update_profile       X
- * delete_profile       X delete account
+ * delete_profile       X delete account    X
  * delete_other_users   X
  * authentication_check X
  */

@@ -9,34 +9,28 @@ const AccountSchema = new mongoose.Schema({
     },
     wallet:{
         BTC:{
-            type:mongoose.Decimal128,
-            default:0.0,
-            validate(value){if(validator.isEmpty(value) || !validator.isNumeric(value)){throw new Error ('Not valid BTC!')}}
+            type:mongoose.Schema.Types.Decimal128,
+            default:"0.2",
         },
         XRP:{
-            type:mongoose.Decimal128,
-            default:0.0,
-            validate(value){if(validator.isEmpty(value) || !validator.isNumeric(value)){throw new Error ('Not valid XRP!')}}
+            type:mongoose.Schema.Types.Decimal128,
+            default:"0.2",
         },
         DASH:{
-            type:mongoose.Decimal128,
-            default:0.0,
-            validate(value){if(validator.isEmpty(value) || !validator.isNumeric(value)){throw new Error ('Not valid DASH!')}}
+            type:mongoose.Schema.Types.Decimal128,
+            default:"0.2",
         },
         ETH:{
-            type:mongoose.Decimal128,
-            default:0.0,
-            validate(value){if(validator.isEmpty(value) || !validator.isNumeric(value)){throw new Error ('Not valid ETH!')}}
+            type:mongoose.Schema.Types.Decimal128,
+            default:"0.2",
         },
         LTC:{
-            type:mongoose.Decimal128,
-            default:0.0,
-            validate(value){if(validator.isEmpty(value) || !validator.isNumeric(value)){throw new Error ('Not valid LTC!')}}
+            type:mongoose.Schema.Types.Decimal128,
+            default:"0.2",
         },
         TL:{
-            type:mongoose.Decimal128,
-            default:0.0,
-            validate(value){if(validator.isEmpty(value) || !validator.isNumeric(value)){throw new Error ('Not valid TL!')}}
+            type:mongoose.Schema.Types.Decimal128,
+            default:"0.2",
         }
     }
 },{
