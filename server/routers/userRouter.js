@@ -35,7 +35,7 @@ router.post('/register',async(req,res)=>{
         await user.save()
         const account = await user.createAccount()
         await account.save()
-        res.status(200).json({user,token,account})
+        res.status(200).json({user,token})
     } catch (error) {
         res.status(400).json({msg:'User could not created!'})
     }
@@ -56,7 +56,8 @@ router.delete('/delete_other_users',authentication,async(req,res)=>{
         req.user = await User.deleteOtherUsers(req.user,req.token)
         await req.user.save()
         const user = req.user
-        res.status(200).json({user})
+        const token = req.token
+        res.status(200).json({user,token})
     } catch (error) {
         res.status(400).json({msg:'Something went wrong while deleting other users!'})
     }
@@ -79,7 +80,8 @@ router.patch('/update_profile',authentication,async(req,res)=>{
         keylist.map((value)=>{req.user[value] = req.body[value]})
         await req.user.save()
         const user = req.user
-        res.status(200).json({user})
+        const token = req.token
+        res.status(200).json({user,token})
     } catch (error) {
         res.status(200).json({msg:'User data could not be updated!'})
     }
