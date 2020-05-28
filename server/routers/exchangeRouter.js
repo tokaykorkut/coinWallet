@@ -18,7 +18,8 @@ router.post('/buy',authentication,async(req,res)=>{
         const account = await Account.findOne({owner:req.user._id})
         await account.makeExchange(req.body.amount,conversion_amount,rate,req.body.from,req.body.to)
         await account.save()
-        res.status(200).json({account})
+        const wallet = account.wallet
+        res.status(200).json({wallet})
     } catch (error) {
         res.status(400).json({msg:'Buy operation could not be processed!'})
     }
@@ -33,7 +34,8 @@ router.post('/sell',authentication,async(req,res)=>{
         const account = await Account.findOne({owner:req.user._id})
         await account.makeExchange(req.body.amount,conversion_amount,rate,req.body.from,req.body.to)
         await account.save()
-        res.status(200).json({account})
+        const wallet = account.wallet
+        res.status(200).json({wallet})
     } catch (error) {
         res.status(400).json({msg:'Sell operation could not be processed!'})
     }
@@ -42,7 +44,8 @@ router.post('/sell',authentication,async(req,res)=>{
 router.get('/get_wallet',authentication,async(req,res)=>{
     try {
         const account = await Account.findOne({owner:req.user._id.toString()})
-        res.status(200).json({account})
+        const wallet = account.wallet
+        res.status(200).json({wallet})
     } catch (error) {
         res.status(400).json({msg:'Wallet could not be gotten!'})
     }

@@ -7,7 +7,8 @@
     "dev-server": "nodemon index.js",
     "start": "node index.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run dev-server\" \"npm run client\" "
+    "dev": "concurrently \"npm run dev-server\" \"npm run client\" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "tokay",
   "license": "ISC",
@@ -17,6 +18,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.12",
+    "path": "^0.12.7",
     "validator": "^13.0.0"
   },
   "devDependencies": {

@@ -9,21 +9,39 @@ export default (state=initialState,action)=>{
             return{
                 ...state,
                 isLoading:false,
-                wallet: action.payload.wallet
+                ...action.payload
             }
 
+        case 'GET_WALLET_FAILED':
+            return{
+                ...state,
+                isLoading:false
+            }
+    
         case 'BUY_SUCCESS':
             return{
                 ...state,
                 isLoading:false,
-                wallet: action.payload.wallet
+                ...action.payload
+            }
+
+        case 'BUY_FAILED':
+            return{
+                ...state,
+                isLoading:false
             }
 
         case 'SELL_SUCCESS':
             return{
                 ...state,
                 isLoading:false,
-                wallet: action.payload.wallet
+                ...action.payload
+            }
+
+        case 'SELL_FAILED':
+            return{
+                ...state,
+                isLoading:false
             }
 
         case 'WALLET_LOADING': 

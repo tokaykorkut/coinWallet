@@ -1,5 +1,5 @@
 const initialState={
-    isAuthenticated:null,
+    isAuthenticated:false,
     isLoading:false,
     user:null,
     token:localStorage.getItem('token')
@@ -11,6 +11,15 @@ export default (state=initialState,action)=>{
             return{
                 ...state,
                 isLoading:true
+            }
+        
+        case 'USER_LOADED':
+            return{
+                ...state,
+                ...action.payload,
+                isLoading:false,
+                isAuthenticated:true
+                
             }
 
         case 'LOGIN_SUCCESS':
@@ -27,8 +36,8 @@ export default (state=initialState,action)=>{
             return{
                 ...state,
                 token:null,
-                isAuthenticated:false,
                 isLoading:false,
+                isAuthenticated:false,
                 user:null
             }
 
@@ -45,9 +54,9 @@ export default (state=initialState,action)=>{
             localStorage.removeItem('token')
             return{
                 ...state,
-                isAuthenticated:false,
                 isLoading:false,
                 token:null,
+                isAuthenticated:false,
                 user:null
             }
 
@@ -55,9 +64,9 @@ export default (state=initialState,action)=>{
             localStorage.removeItem('token')
             return{
                 ...state,
-                isAuthenticated:false,
                 user:null,
                 token:null,
+                isAuthenticated:false,
                 isLoading:false
             }
 
@@ -65,9 +74,9 @@ export default (state=initialState,action)=>{
             localStorage.removeItem('token')
             return {
                 ...state,
-                isAuthenticated:false,
                 user:null,
                 token:null,
+                isAuthenticated:false,
                 isLoading:false
             }
 
@@ -76,8 +85,8 @@ export default (state=initialState,action)=>{
             return{
                 ...state,
                 token:null,
-                isAuthenticated:false,
                 isLoading:false,
+                isAuthenticated:false,
                 user:null
             }
 

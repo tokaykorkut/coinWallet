@@ -15,18 +15,18 @@ const router = express.Router()
  */
 
 router.post('/login',async(req,res)=>{
-    if (!req.body.email || !req.body.password){res.status(400).json({msg:"Please fill all fields!"})}
+    if (!req.body.email || !req.body.password){return res.status(400).json({msg:"Please fill all fields!"})}
     try {
         const user = await User.findCridentials(req.body.email,req.body.password)
         const token = await user.generateToken()
         res.status(200).json({user,token})
     } catch (error) {
-        res.status(400).json({msg:"Please enter email and/or password correctly!"})
+        res.status(400).json({msg:'Please enter email and/or password correctly!'})
     }
 })
 
 router.post('/register',async(req,res)=>{
-    if (!req.body.email || !req.body.password || !req.body.firstname || !req.body.surname){res.status(400).json({msg:"Please fill all fields!"})}
+    if (!req.body.email || !req.body.password || !req.body.firstname || !req.body.surname){return res.status(400).json({msg:"Please fill all fields!"})}
     const user = new User(req.body)
     const test = await User.findOne({email:req.body.email})
     if(test){return res.status(400).json({msg:'User already exists!'})}
@@ -89,7 +89,7 @@ router.patch('/update_profile',authentication,async(req,res)=>{
 
 router.get('/authentication_check',async(req,res)=>{
     try {
-        const user = User.findOne({'tokens.token':req.header('Authorization')})
+        const user = await User.findOne({'tokens.token':req.header('Authorization')})
         if(!user){return res.status(400).json({msg:'Not Aurhorizated!'})}
         res.status(200).json({user})
     } catch (error) {

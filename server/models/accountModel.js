@@ -9,27 +9,27 @@ const AccountSchema = new mongoose.Schema({
     },
     wallet:{
         BTC:{
-            type:mongoose.Schema.Types.Decimal128,
+            type:String,//mongoose.Schema.Types.Decimal128,
             default:"0.2",
         },
         XRP:{
-            type:mongoose.Schema.Types.Decimal128,
+            type:String,//mongoose.Schema.Types.Decimal128,
             default:"0.2",
         },
         DASH:{
-            type:mongoose.Schema.Types.Decimal128,
+            type:String,//mongoose.Schema.Types.Decimal128,
             default:"0.2",
         },
         ETH:{
-            type:mongoose.Schema.Types.Decimal128,
+            type:String,//mongoose.Schema.Types.Decimal128,
             default:"0.2",
         },
         LTC:{
-            type:mongoose.Schema.Types.Decimal128,
+            type:String,//mongoose.Schema.Types.Decimal128,
             default:"0.2",
         },
         TL:{
-            type:mongoose.Schema.Types.Decimal128,
+            type:String,//mongoose.Schema.Types.Decimal128,
             default:"0.2",
         }
     }
